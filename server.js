@@ -50,6 +50,16 @@ app.post('/register', (req, res) => {
   res.json(database.users[database.users.length - 1]);
 });
 
+app.get('/profile/:id', (req, res) => {
+  const { id } = req.params;
+  const users = database.users.filter(user => user.id === parseInt(id));
+  users.length > 0
+  ?
+  res.json(users[0])
+  :
+  res.json('No users found');
+});
+
 app.listen(3000, () => {
   console.log('App is running on port 3000!');
 });

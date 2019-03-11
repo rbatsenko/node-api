@@ -53,6 +53,7 @@ app.post('/register', (req, res) => {
 app.get('/profile/:id', (req, res) => {
   const { id } = req.params;
   const users = database.users.filter(user => user.id === parseInt(id));
+  
   users.length > 0
   ?
   res.json(users[0])
